@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+<head>
+
+	<title>JavaScript 在线计算器</title>
+</head>
+<body>
+	<header>
+		<nav>JavaScript - 在线计算器（Calculator）</nav>
+	</header>
+	<hr>
+	<table>
+		<tr>
+			<td  colspan="1">
+				<input type="text" id="id-input-text-calculator" />
+			</td>
+			<td colspan="1">
+				<input type="button" id="id-input-btn-calculator" onclick="on_cal_click()" value="计算"/>
+			</td>
+			<td colspan="1">
+				<div id="id-div-result"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button type="button" id="id-btn-1" onclick="on_btn_click(this.id)" value="1">1</button>
+				<button type="button" id="id-btn-2" onclick="on_btn_click(this.id)" value="2">2</button>
+				<button type="button" id="id-btn-3" onclick="on_btn_click(this.id)" value="3">3</button>
+				<button type="button" id="id-btn-add" onclick="on_btn_click(this.id)" value="+">+</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button type="button" id="id-btn-4" onclick="on_btn_click(this.id)" value="4">4</button>
+				<button type="button" id="id-btn-5" onclick="on_btn_click(this.id)" value="5">5</button>
+				<button type="button" id="id-btn-6" onclick="on_btn_click(this.id)" value="6">6</button>
+				<button type="button" id="id-btn-minus" onclick="on_btn_click(this.id)" value="-">&minus;</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button type="button" id="id-btn-7" onclick="on_btn_click(this.id)" value="7">7</button>
+				<button type="button" id="id-btn-8" onclick="on_btn_click(this.id)" value="8">8</button>
+				<button type="button" id="id-btn-9" onclick="on_btn_click(this.id)" value="9">9</button>
+				<button type="button" id="id-btn-times" onclick="on_btn_click(this.id)" value="*">&times;</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<button type="button" id="id-btn-0" onclick="on_btn_click(this.id)" value="0">0</button>
+				<button type="button" id="id-btn-c" onclick="on_btn_click(this.id)" value="c">C</button>
+				<button type="button" id="id-btn-equal" onclick="on_btn_click(this.id)" value="=">=</button>
+				<button type="button" id="id-btn-divide" onclick="on_btn_click(this.id)" value="/">&divide;</button>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function on_cal_click() {
+			var v_cal = document.getElementById("id-input-text-calculator").value;
+			var v_result = eval(v_cal);
+			document.getElementById("id-div-result").innerText = "  结果:  " + v_result;
+		}
+		function on_btn_click(thisid) {
+			var btn = document.getElementById(thisid);
+			btn.addEventListener('click', function(event) {
+				var v_value = event.target.value;
+				console.log(v_value);
+				if(v_value == "c") {
+					document.getElementById("id-input-text-calculator").value = "";
+				} else if(v_value == "=") {
+					on_cal_click();
+				} else {
+					document.getElementById("id-input-text-calculator").value += v_value;
+				}
+			}, false);
+		}
+	</script>
+</body>
+</html>
